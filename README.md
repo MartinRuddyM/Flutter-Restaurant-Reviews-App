@@ -1,86 +1,27 @@
-# Flutter on Codespaces
+# Application MyRistorante
 
-This is a template repository for developing with [Flutter](https://flutter.dev/) on the web on [GitHub Codespaces](https://github.com/features/codespaces).
+This app is a basic customer reviews app to upload and interact with reviews of clients of a single restaurant. The main page allows to navigate to the other three views: to create a new review, see current reviews, and see stats.
+ 
 
-Flutter is a cross-platform UI framework by Google for building apps. Codespaces is a cloud-based development environment that lets you run a full-featured IDE in the cloud. This template repository lets you get started with Flutter on Codespaces in just a few clicks.
+The app is **responsive** and has two breakpoints as required. This is reflected in how the screen is organized. I also added a custom feature so the background color changes for each different screen setting (3 colours in total). You can play around with screen width and see for yourself. There is also a maximum width for screens of high resolution.
+ 
 
-**Table of Contents**
-- [Important things to note](#important-things-to-note)
-- [Setup](#setup)
-  - [Getting started](#getting-started)
-  - [Using a sample](#using-a-sample)
-- [Development Environment](#development-environment)
-  - [Developing in the browser](#developing-in-the-browser)
-  - [Developing in the desktop app](#developing-in-the-desktop-app)
-- [Flutter Development](#flutter-development)
-  - [Developing for mobile](#developing-for-mobile)
-- [Codespaces Usage](#codespaces-usage)
-  - [Managing your codespace](#managing-your-codespace)
+You can "Like" the different reviews and there is a setting to limit the number of likes to one per review (which would be expected). Data is stored in local browser data between sessions using hive_ce, so your data will be kept even if you close the browser and reopen. There is also data check in place so the rating number is within the allowed range. Form deosn't send otherwise.
+ 
 
-This repository is generated from the [dilanx/flutter-codespaces](https://github.com/dilanx/flutter-codespaces) repository.
+Navigation is very intuitive.
 
-## Important things to note
+## Link
+You can find the app in this [link](https://martinruddym.github.io/Flutter-Restaurant-Reviews-App/).
 
-Codespaces is not completely free. Free users have 120 core-hours per month and Pro users have 180 core-hours per month. The default codespace runs on a 2-core machine, so that's 60 hours (or 90 hours) of free usage per month before getting charged. Make sure to stop your codespace when you're not using it (it automatically stops after 30 minutes of inactivity by default). See more pricing details [here](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces), and manage your active codespaces [here](https://github.com/codespaces).
+## Creating a new review
+Creating a new review involves adding a title and description as well as a numeric 1-5 rating. The information is stored persistently and will load into new sessions once the review is submitted. The form checks for type of data and does not allow to send e.g. a string in lieu of a numebr fo the rating.
 
-## Setup
+## Seeing all reviews
+This page allows to see all current reviews and give likes to them.
 
-### Getting started
+## Path variables
+Path variables are implemented in all reviews screen to allow to filter the reviews. Add iinto the URL "/#Rating" e.g. "/5" to see only reviews whose rating is 5. This is essentially a filtering tool to provide better app usability.
 
-1. Press "Use this template" towards the top right of this repository and create a new repository from this template.
-
-    > There's also an option to open this repository in Codespaces and publish it to GitHub later from there, but I recommend creating your own repository first.
-
-2. In your new repository, press "Code", select "Codespaces", then press "Create codespace on main". A container with everything you need to get started will be created automatically, then you'll be taken to your new codespace (VS Code in your browser). If you'd prefer to work on your codespace using the VS Code desktop app instead of the browser app, you can follow these instructions.
-
-3. Press the "Extensions" icon in the left sidebar. You'll see that the Flutter and Dart extensions are already being installed. The environment won't work properly until the installation is complete, so wait for it to finish.
-
-4. In your integrated terminal (the TERMINAL tab), run `flutter pub get` to install the missing Flutter dependencies.
-
-5. In the ports view (the PORTS tab), port 3000 should be listed there already. Right click on it, and, under "Port Visibility", select "Public". This is important so the app can access services on your client from other server ports without getting blocked due to CORS.
-
-6. Run `./run.sh` in the terminal to start the app. A notification will appear saying that an app opened on port 3000. You can press "Open in Browser" to open it, but it won't load until the terminal shows that it's ready. You can refresh once the app is loaded (as indicated by a prompt to press "R" to reload).
-
-    > You can find the link to access the app in your browser at any time by going to the ports view, right clicking on port 3000, and pressing "Open in Browser".
-
-7. That's it! Make changes in `lib/main.dart`, press "R" in the terminal, then refresh the page to see your changes appear quickly.
-
-### Using a sample
-
-There are a collection of sample Flutter apps you can use. They're stored in the `samples` directory. If you want to use one of them, find the folder of the sample you want to use, then move the contents of the folder into the root of your repository. At minimum, this should overwrite `pubspec.yaml` and `lib`.
-
-## Development Environment
-
-### Developing in the browser
-
-The browser-based VS Code is the default editor for Codespaces, and has most of the features you'd need. Opening your codespace from [github.com/codespaces](https://github.com/codespaces) will automatically open the browser-based editor.
-
-### Developing in the desktop app
-
-If you'd prefer to use the desktop app version of VS Code, you can follow these instructions:
-
-1. Download the [VS Code desktop app](https://code.visualstudio.com/). You probably already have it if you chose to follow these instructions.
-
-2. Install the [GitHub Codespaces extension](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces).
-
-3. Open the command pallette from the View menu (or cmd+shift+P / ctrl+shift+P) and run "Codespaces: Connect to Codespace...".
-
-    > Alternatively, click the button in the very bottom left of VS Code (it says "Open a Remote Window" if you hover over it) and press "Connect to Codespace...".
-
-4. Log in if necessary, then select your codespace from the list.
-
-## Flutter Development
-
-### Developing for mobile
-
-Running Flutter in Codespaces makes it a bit difficult to run the app in a mobile simulator. However, developing for the web is basically the same as developing for mobile. I'd recommend opening your browser's developer tools and selecting a mobile device to emulate.
-
-If you're using Chrome or another Chromium-based browser, you can open DevTools like [this](https://developer.chrome.com/docs/devtools/open/) and emulate a device like [this](https://developer.chrome.com/docs/devtools/device-mode/). It'll be pretty similar for other browsers like Safari and Firefox.
-
-## Codespaces Usage
-
-### Managing your codespace
-
-When you're not using your codespace, deactivate it by going to [Codespaces](https://github.com/codespaces), pressing the 3 dots on the right side of the codespace, and pressing "Stop codespace". You can also deactivate it within the codespace by pressing "Codespaces" at the bottom left of VS Code and selecting "Stop Current Codespace".
-
-Edited files in your workspace are not deleted when stopping the codespace and the container won't need to be rebuilt when you start it again. Provided that you're under the storage limit (15 GB for Free users and 20 GB for Pro), you won't be charged if your codespace is offline. I recommend committing your repository changes on your codespace often to avoid losing work if you were to delete your codespace.
+## See stats
+This page shows some basic calculated statistics for the restaurant, regarding total number of reviews on the app and the average rating between them.
