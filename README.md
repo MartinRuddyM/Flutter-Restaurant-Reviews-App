@@ -9,7 +9,7 @@ The app is **responsive** and has two breakpoints as required. This is reflected
 You can "Like" the different reviews and there is a setting to limit the number of likes to one per review (which would be expected). Data is stored in local browser data between sessions using hive_ce, so your data will be kept even if you close the browser and reopen. There is also data check in place so the rating number is within the allowed range. Form deosn't send otherwise.
  
 
-Navigation is very intuitive.
+Navigation is very intuitive. Use **path variables** in all reviews screen to filter content (see below).
 
 ## Link
 You can find the app in this [link](https://martinruddym.github.io/Flutter-Restaurant-Reviews-App/).
